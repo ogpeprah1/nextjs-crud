@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  display: flex;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  visibility: hidden;
+}
+
+.sublink:hover .indicator,
+.sublink:focus .indicator {
+  visibility: visible;
+}
+
+.active {
+  border-left: 5px rgb(242, 255, 0) solid;
+}
+
+.active:hover {
+  color: white;
+}
+
+.profileImage {
+  width: 30px;
+  height: 30px;
+  background-color: powderblue;
+  border-radius: 50%;
+}

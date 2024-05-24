@@ -6,7 +6,7 @@ function AdminNav() {
   return (
     <div
       className="lg:w-[20%] bg-white flex flex-col gap-3 h-screen
-      border-b-0 border sm:w-[60%] "
+      border-b-0 border sm:w-[60%] sticky top-0"
     >
       <h1 className="p-4 font-bold text-2xl">
         <Link href="/">HRR..</Link>

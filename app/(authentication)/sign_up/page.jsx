@@ -62,6 +62,8 @@ function SignUpPage() {
         setError("");
         router.push("/sign_in");
       }
+      const data = await res.json();
+      return Response.json(data);
     } catch (error) {
       setError("Error, try again");
       console.log(error);
@@ -70,7 +72,7 @@ function SignUpPage() {
   return (
     <div className="w-screen h-screen justify-center items-center flex flex-col">
       <Header
-        heading="Add Employee"
+        heading="Register as Admin OR Add Employee"
         paragraph="Have an account? "
         linkName="Signin"
         linkUrl="/sign_in"

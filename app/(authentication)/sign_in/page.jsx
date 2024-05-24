@@ -8,7 +8,7 @@ function SignInPage() {
       <Header
         heading="Login to your account"
         paragraph="Register as an Admin or add employee"
-        linkName="Signup"
+        linkName=" Signup"
         linkUrl="/sign_up"
       />
       <SignInForm />

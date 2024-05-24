@@ -4,7 +4,7 @@ import EmpNav from "@/app/components/emp_nav";
 
 export const metadata = {
   title: {
-    default: "HRR..",
+    default: "Employee",
     template: "%s | Employee | HRR..",
   },
   description: "Manage your employees in just one app.",
@@ -13,7 +13,7 @@ export const metadata = {
 export default function EmpPageLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-white">
         <EmpNav />
         <div className=" w-full p-6">
           <div className="flex justify-between mb-4">

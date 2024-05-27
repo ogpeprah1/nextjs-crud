@@ -1,3 +1,4 @@
+import Table from "@/app/components/tableSection";
 import React from "react";
 export const metadata = {
   title: {
@@ -5,7 +6,11 @@ export const metadata = {
   },
 };
 function LeaveRequests() {
-  return <div>Leave Request Page</div>;
+  return (
+    <div className="flex flex-col gap-4">
+      <Table head="Leave Requests" />
+    </div>
+  );
 }
 
 export default LeaveRequests;

@@ -9,7 +9,7 @@ function AdminNav() {
       border-b-0 border sm:w-[60%] sticky top-0"
     >
       <h1 className="p-4 font-bold text-2xl">
-        <Link href="/">HRR..</Link>
+        <Link href="/">Wilmar HR</Link>
       </h1>
       <h2 className="bg-red-400 text-white w-fit py-1 px-4 rounded-md ml-2 mb-2 tex font-semibold">
         Dashboard

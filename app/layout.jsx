@@ -2,8 +2,8 @@ import "./global.css";
 
 export const metadata = {
   title: {
-    default: "HRR..",
-    template: "%s | HRR..",
+    default: "Wilmar HR",
+    template: "%s | Wilmar HR",
   },
   description: "Manage your employees in just one app.",
 };

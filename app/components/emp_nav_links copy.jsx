@@ -11,11 +11,6 @@ export const Emp_Nav_Links = [
     icon: ReportAndAnalyticsIcon,
   },
   {
-    name: "My profile",
-    url: "/employee/profile",
-    icon: EmployeeIcon,
-  },
-  {
     name: "Change Password",
     url: "/employee/change_password",
     icon: HelpIcon,

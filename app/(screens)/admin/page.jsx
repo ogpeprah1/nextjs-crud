@@ -1,4 +1,5 @@
 import InfoCard from "@/app/components/InfoCard";
+import Table from "@/app/components/tableSection";
 import React from "react";
 
 function DashboardPage() {
@@ -20,13 +21,13 @@ function DashboardPage() {
     },
   ];
   return (
-    <div>
-      <div className="w-full flex gap-3 mt-6">
+    <div className="flex flex-col gap-4">
+      <div className="w-full flex gap-3">
         {Info.map((i) => (
           <InfoCard key={i.title} title={i.title} value={i.value} url={i.url} />
         ))}
       </div>
-      <div className="mt-6">table</div>
+      <Table head="Employees" />
     </div>
   );
 }

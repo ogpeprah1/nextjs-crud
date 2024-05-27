@@ -1,3 +1,4 @@
+import Table from "@/app/components/tableSection";
 import React from "react";
 
 export const metadata = {
@@ -7,7 +8,12 @@ export const metadata = {
 };
 
 function ApplyLeave() {
-  return <div>Apply Leave</div>;
+  return (
+    <div>
+      Apply Leave
+      <Table head="Leave Requests" />
+    </div>
+  );
 }
 
 export default ApplyLeave;

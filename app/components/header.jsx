@@ -9,9 +9,9 @@ export default function Header({
   linkUrl = "#",
 }) {
   return (
-    <div className="mb-10 flex flex-col justify-center items-center w-1/4">
+    <div className="flex flex-col justify-center items-center w-full p-4 h-full sm:h-fit sm:p-0 sm:w-1/4 ">
       <Image src={CompanyLogo} className="w-[100px]" />
-      <h2 className="mt-6 text-center text-3xl font-extrabold text-white text-wrap w-full">
+      <h2 className="mt-6 text-center text-2xl font-extrabold text-white text-wrap w-full">
         {heading}
       </h2>
       <p className="mt-2 text-center text-sm text-gray-500 ">

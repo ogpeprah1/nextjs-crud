@@ -1,9 +1,11 @@
 import User from "@/models/User";
-import connect from "@/utils/db";
+import connectDB from "@/utils/db";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
-export const POST = async (request) => {
+export default async (request, response) => {
+  await connectDB();
+
   const {
     firstname,
     lastname,
@@ -15,9 +17,19 @@ export const POST = async (request) => {
     Address,
     Department,
     Role,
-  } = await request.json();
+  } = await request.body;
 
-  await connect();
+  if (
+    !firstname ||
+    !lastname ||
+    !email ||
+    !password ||
+    !Gender ||
+    !Address ||
+    !Role
+  ) {
+    return response.status(400).json({ message: "All * fields are required" });
+  }
 
   const existingUser = await User.findOne({ email });
 
@@ -42,7 +54,7 @@ export const POST = async (request) => {
   try {
     await newUser.save();
     return new NextResponse(`User ${Role} Successfully added`, {
-      status: 200,
+      status: 201,
     });
   } catch (error) {
     return new NextResponse(error, {

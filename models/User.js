@@ -13,7 +13,7 @@ const userSchema = new Schema(
     othernames: {
       type: String,
     },
-    DateOfBirth: {
+    dateOfBirth: {
       type: Date,
       required: true,
     },
@@ -26,21 +26,19 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-
-    Gender: {
+    gender: {
       type: String,
       required: true,
     },
-    Department: {
+    department: {
       type: String,
       required: true,
     },
-    Address: {
+    address: {
       type: String,
       required: true,
     },
-
-    Role: {
+    role: {
       type: String,
       required: true,
     },

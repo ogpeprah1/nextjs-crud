@@ -8,42 +8,31 @@ import Input from "@/app/components/input";
 function SignUpPage() {
   const [error, setError] = useState();
   const [form, setForm] = useState({
-    Firstname: "",
-    Lastname: "",
-    Othernames: "",
-    DateOfBirth: "",
-    Email: "",
-    Password: "",
-    Gender: "",
-    Address: "",
-    Department: "",
-    Role: "",
+    firstname: "",
+    lastname: "",
+    othernames: "",
+    dateOfBirth: "",
+    email: "",
+    password: "",
+    gender: "",
+    department: "",
+    address: "",
+    role: "",
   });
 
   const router = useRouter();
 
-  // const isEmailValid = (email) => {
-  //   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-  //   return emailRegex.test(email);
-  // };
-
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
-    // if (!isEmailValid(form.Email)) {
-    //   setError("Email is invalid!");
-    //   return;
-    // }
-
-    // if (!form.Password || form.Password.length < 8) {
-    //   setError("Password is invalid!");
-    //   return;
-    // }
-
+    // console.log(form);
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -51,22 +40,25 @@ function SignUpPage() {
         body: JSON.stringify(form),
       });
 
+      const data = await res.json(); // Parse response body as JSON
+
+      console.log(data);
+
       if (res.status === 400) {
-        setError("Email is already registed");
-      }
-      if (res.status === 200) {
+        setError("Email is already registered");
+      } else if (res.status === 201) {
         setError("");
         router.push("/sign_in");
+      } else {
+        setError("Error, try again");
       }
-      const data = await res.json();
-      return Response.json(data);
     } catch (error) {
-      setError("Error, try again");
-      console.log(error);
+      console.error(error.message);
     }
   };
+
   return (
-    <div className="bg-gray-800  justify-center items-center flex flex-col gap-2 sm:">
+    <div className=" h-screen w-screen justify-center items-center flex flex-col gap-2">
       <Header
         heading="Register as Admin OR Add Employee"
         paragraph="Have an account? "
@@ -83,16 +75,16 @@ function SignUpPage() {
             placeholder="Firstname"
             labelText="firstname"
             type="text"
-            name="Firstname"
-            onChange={handleChange}
+            name="firstname"
+            handleChange={handleChange}
           />
           <Input
             labelFor="Lastname"
             placeholder="Lastname"
             labelText="lastname"
             type="text"
-            name="Lastname"
-            onChange={handleChange}
+            name="lastname"
+            handleChange={handleChange}
           />
         </div>
         <div className="flex flex-col gap-3 sm:flex-row justify-between">
@@ -101,16 +93,16 @@ function SignUpPage() {
             placeholder="Othernames (optional)"
             labelText="othernames"
             type="text"
-            name="Othernames"
-            onChange={handleChange}
+            name="othernames"
+            handleChange={handleChange}
           />
           <Input
             labelFor="Date of Birth"
             placeholder="Date of Birth"
             labelText="date of birth"
             type="date"
-            name="Date"
-            onChange={handleChange}
+            name="dateOfBirth"
+            handleChange={handleChange}
           />
         </div>
 
@@ -120,8 +112,8 @@ function SignUpPage() {
           labelText="email"
           type="email"
           customWidth="full"
-          name="Email"
-          onChange={handleChange}
+          name="email"
+          handleChange={handleChange}
         />
         <div className="flex flex-col sm:flex-row justify-between gap-3">
           <Input
@@ -129,12 +121,13 @@ function SignUpPage() {
             placeholder="Password"
             labelText="password"
             type="password"
-            name="Password"
-            onChange={handleChange}
+            name="password"
+            handleChange={handleChange}
           />
           <select
             id="Gender"
-            name="Gender"
+            name="gender"
+            value={form.gender}
             onChange={handleChange}
             className="rounded-lg  relative block w-[100%] px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
           >
@@ -148,22 +141,23 @@ function SignUpPage() {
         </div>
 
         <select
-          id="Departments"
-          name="Gender"
+          id="Department"
+          name="department"
+          value={form.department}
           onChange={handleChange}
           className="rounded-lg  relative block w-[100%] px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
         >
           <option value="" selected disabled>
             Select Department
           </option>
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">3</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
         </select>
 
         <textarea
           id="Address"
-          name="Address"
+          name="address"
           onChange={handleChange}
           placeholder="Enter address"
           className="w-full h-[30%] rounded-lg  relative block px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
@@ -172,7 +166,8 @@ function SignUpPage() {
         <div className="flex gap-4">
           <select
             id="role"
-            name="Role"
+            name="role"
+            value={form.role}
             onChange={handleChange}
             className="rounded-lg  relative block w-[70%] px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
           >

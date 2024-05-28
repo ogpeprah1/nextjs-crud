@@ -9,8 +9,8 @@ export default function Header({
   linkUrl = "#",
 }) {
   return (
-    <div className="flex flex-col justify-center items-center w-full p-4 h-full sm:h-fit sm:p-0 sm:w-1/4 ">
-      <Image src={CompanyLogo} className="w-[100px]" />
+    <div className="flex flex-col justify-center items-center w-full p-4  sm:h-fit sm:p-0 sm:w-1/4 ">
+      <Image src={CompanyLogo} alt="company logo" className="w-[100px]" />
       <h2 className="mt-6 text-center text-2xl font-extrabold text-white text-wrap w-full">
         {heading}
       </h2>
